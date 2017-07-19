@@ -1,10 +1,9 @@
+import java.util.List;
+
+import bwapi.Position;
 import bwapi.Race;
-import bwapi.TechType;
-import bwapi.TilePosition;
 import bwapi.Unit;
-import bwapi.UnitCommand;
 import bwapi.UnitType;
-import bwapi.UpgradeType;
 import bwta.BWTA;
 import bwta.BaseLocation;
 import bwta.Chokepoint;
@@ -16,6 +15,7 @@ import bwta.Chokepoint;
 public class StrategyManager {
 
 	private static StrategyManager instance = new StrategyManager();
+	private TargetData targetData = new TargetData();
 
 	private CommandUtil commandUtil = new CommandUtil();
 
@@ -69,47 +69,72 @@ public class StrategyManager {
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getBasicSupplyProviderUnitType(), BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
 
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
 
-			// SupplyUsed가 8 일때 1번째 게이트웨이 빌드
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Gateway, BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Gateway, BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
 			
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-
-			// SupplyUsed가 9 일때 가스 리파이너리 빌드
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getRefineryBuildingType());
-
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-
-			// SupplyUsed가 10 일때 사이버네틱스 코어 빌드
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Cybernetics_Core, BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
-
-			// 1번째 질럿 빌드
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getBasicSupplyProviderUnitType(), BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
+			
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Zealot);
-
-			// SupplyUsed가 12 일때 시타델 오브 아둔 빌드
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Citadel_of_Adun);
-
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-
-			// SupplyUsed가 14 일때 템플러 아카이브, 2번째 게이트웨이 빌드
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Templar_Archives);
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Gateway, BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
-
-			// 2번째 질럿 빌드
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Zealot);
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Zealot);
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Zealot);
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getBasicSupplyProviderUnitType(), BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Zealot);
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Zealot);
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getBasicSupplyProviderUnitType(), BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Zealot);
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Zealot);
+			
 
-			// SupplyUsed가 16 일때 파일런 빌드
+		} else if (MyBotModule.Broodwar.self().getRace() == Race.Zerg) {
+
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Spawning_Pool, BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+			
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getBasicSupplyProviderUnitType(), BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
 
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-
-			// 4마리 다크 템플러 빌드 후 파일런 빌드
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Dark_Templar);
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Dark_Templar);
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Dark_Templar);
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Protoss_Dark_Templar);
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getBasicSupplyProviderUnitType(), BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
 
 		}
 	}
@@ -266,7 +291,9 @@ public class StrategyManager {
 	}
 
 	public void executeCombat() {
-
+		
+//		if (MyBotModule.Broodwar.getFrameCount() % 5 != 0) return;
+		
 		// 공격 모드가 아닐 때에는 전투유닛들을 아군 진영 길목에 집결시켜서 방어
 		if (isFullScaleAttackStarted == false) {
 			Chokepoint firstChokePoint = BWTA.getNearestChokepoint(InformationManager.Instance().getMainBaseLocation(InformationManager.Instance().selfPlayer).getTilePosition());
@@ -277,8 +304,8 @@ public class StrategyManager {
 				}
 			}
 
-			// Protoss_Dark_Templar 유닛이 2개 이상 생산되었고, 적군 위치가 파악되었으면 총공격 모드로 전환
-			if (MyBotModule.Broodwar.self().completedUnitCount(UnitType.Protoss_Dark_Templar) >= 2) {
+			if (MyBotModule.Broodwar.self().completedUnitCount(UnitType.Protoss_Zealot) >= 6
+					|| MyBotModule.Broodwar.self().completedUnitCount(UnitType.Zerg_Zergling) >= 6) {
 				if (InformationManager.Instance().enemyPlayer != null
 					&& InformationManager.Instance().enemyRace != Race.Unknown  
 					&& InformationManager.Instance().getOccupiedBaseLocations(InformationManager.Instance().enemyPlayer).size() > 0) {				
@@ -289,7 +316,7 @@ public class StrategyManager {
 		// 공격 모드가 되면, 모든 전투유닛들을 적군 Main BaseLocation 로 공격 가도록 합니다
 		else {
 			//std.cout << "enemy OccupiedBaseLocations : " << InformationManager.Instance().getOccupiedBaseLocations(InformationManager.Instance()._enemy).size() << std.endl;
-			
+//			MyBotModule.Broodwar.enemy()
 			if (InformationManager.Instance().enemyPlayer != null
 					&& InformationManager.Instance().enemyRace != Race.Unknown 
 					&& InformationManager.Instance().getOccupiedBaseLocations(InformationManager.Instance().enemyPlayer).size() > 0) 
@@ -323,7 +350,66 @@ public class StrategyManager {
 						// canAttack 유닛은 attackMove Command 로 공격을 보냅니다
 						if (unit.canAttack()) {
 							
-							if (unit.isIdle()) {
+							// attack 할 target 선정
+							List<Unit> enemyUnits = MyBotModule.Broodwar.enemy().getUnits();
+							
+							Unit attackerTarget = null;
+							Unit workerTarget = null;
+							Unit etcTarget = null;
+							
+							int attackUnitCheck = 0;
+							int workerUnitCheck = 0;
+							
+							// 적 유닛 전체를 스캔하여 공격유닛, 생산유닛, 기타유닛(건물 포함) 순으로 기준 Unit 에서 가까운 타겟을 선정
+							for(Unit tempUnit : enemyUnits) {
+								if(tempUnit.getType().canAttack() && !tempUnit.getType().isWorker()) {
+									if(attackerTarget == null) {
+										attackerTarget = tempUnit;
+									}
+									else {
+										if(unit.getDistance(attackerTarget) > unit.getDistance(tempUnit)) {
+											attackerTarget = tempUnit;
+										}
+									}
+									attackUnitCheck++;
+								}
+								else if(attackUnitCheck == 0 && tempUnit.getType().isWorker()) {
+									if(workerTarget == null) {
+										workerTarget = tempUnit;
+									}
+									else {
+										if(unit.getDistance(workerTarget) > unit.getDistance(tempUnit)) {
+											workerTarget = tempUnit;
+										}
+									}
+									workerUnitCheck++;
+								}
+								else if(attackUnitCheck + workerUnitCheck == 0){
+									if(etcTarget == null) {
+										etcTarget = tempUnit;
+									}
+									else {
+										if(unit.getDistance(etcTarget) > unit.getDistance(tempUnit)) {
+											etcTarget = tempUnit;
+										}
+									}
+								}
+							}
+							
+							// 공격유닛 -> 생산유닛 -> 나머지 순으로 타겟을 선정하여 공격
+							Unit target = null;
+							if(etcTarget != null) target = etcTarget;
+							if(workerTarget != null) target = workerTarget;
+							if(attackerTarget != null) target = attackerTarget;
+							
+							// 우선순위 점사
+							if(targetData.getTarget(unit.getID()) == null || targetData.getTarget(unit.getID()).getID() != target.getID()) {
+								targetData.addTarget(unit.getID(), target);
+								commandUtil.attackUnit(unit, target);
+							}
+							
+							// 쉬는 유닛은 상대 베이스로 어택땅
+							if(unit.isIdle()) {
 								commandUtil.attackMove(unit, targetBaseLocation.getPosition());
 							}
 						} 
