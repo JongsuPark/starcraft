@@ -108,33 +108,53 @@ public class StrategyManager {
 			
 
 		} else if (MyBotModule.Broodwar.self().getRace() == Race.Zerg) {
-
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
 			
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Spawning_Pool, BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getRefineryBuildingType());
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-			
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
 			
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getBasicSupplyProviderUnitType(), BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
-
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
 			
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
-			
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-			
+			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
 			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
 			
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
 			
-			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+			
+			
+			// 5드론
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+//			
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Spawning_Pool, BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+//			
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+//			
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getBasicSupplyProviderUnitType(), BuildOrderItem.SeedPositionStrategy.MainBaseLocation);
+//
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+//			
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+//			
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+//			
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
+//			
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(InformationManager.Instance().getWorkerType());
+//			
+//			BuildManager.Instance().buildQueue.queueAsLowestPriority(UnitType.Zerg_Zergling);
 
 		}
 	}
